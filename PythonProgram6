@@ -1,1 +1,27 @@
 print("Hello World")
+import pandas as pd
+def addrecords():
+ print("_____Add record_____")
+ li=list()
+ di={} 
+ file=pd.read_csv("e:\\project\\data1.csv")
+ let=True
+ while let==True:
+        key=int(input("Enter Adharcard number:"))
+        if key not in file['Adharno']:
+            let=False
+        else:
+            print("Adharcard number already exist try another")
+
+ di['Adharno']=key
+ di['Name']=input("Enter Full Name:")
+ di['Age']=int(input("Enter Age:"))
+ di['Gender']=input("Enter Gender:")
+ di['Zone']=input("Enter Zone (Red, Orange, Green):")
+ di['Frontlineworker']=input("Is the person a Frontline Worker (Yes or No):")
+ di['Disease']=input("Does the person has any chronic disease:")
+ di['Status']=input("Is the person vaccinated (Yes or No):")
+ li.append(di)
+ obj=pd.DataFrame(li)
+ obj.to_csv("e:\\project\\data1.csv",index=None,mode='a',header=None)
+ print("Data Added successfully")
